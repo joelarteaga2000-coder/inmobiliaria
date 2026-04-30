@@ -11,6 +11,8 @@
 
 <body>
 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
 
 <!-- NAVBAR -->
 <header class="navbar" id="navbar">
@@ -105,47 +107,49 @@
     </div>
   </div>
 
+  <!-- FILTROS -->
+  <div class="project-filters reveal">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="residencial">Residencial</button>
+    <button class="filter-btn" data-filter="comercial">Comercial</button>
+    <button class="filter-btn" data-filter="mixto">Mixto</button>
+  </div>
+
   <div class="projects-grid">
 
-    <!-- GRANDE -->
-    <div class="project-card project-card-tall">
+    <div class="project-card project-card-tall" data-cat="residencial" data-project="pedregal">
       <img src="image1.jpg" class="project-img" alt="">
       <div class="project-overlay"></div>
-
       <div class="project-tag">Residencial</div>
-
       <div class="project-content">
         <div class="project-year">2024</div>
         <div class="project-name">Casa Pedregal</div>
         <div class="project-location">CDMX</div>
+        <button class="project-detail-btn">Ver ficha →</button>
       </div>
     </div>
 
-    <!-- CARD 2 -->
-    <div class="project-card">
+    <div class="project-card" data-cat="comercial" data-project="corporativo">
       <img src="image2.jpg" class="project-img" alt="">
       <div class="project-overlay"></div>
-
       <div class="project-tag">Comercial</div>
-
       <div class="project-content">
         <div class="project-year">2024</div>
         <div class="project-name">Corporativo Norte</div>
         <div class="project-location">Santa Fe</div>
+        <button class="project-detail-btn">Ver ficha →</button>
       </div>
     </div>
 
-    <!-- CARD 3 -->
-    <div class="project-card">
+    <div class="project-card" data-cat="mixto" data-project="narvarte">
       <img src="image3.jpg" class="project-img" alt="">
       <div class="project-overlay"></div>
-
       <div class="project-tag">Mixto</div>
-
       <div class="project-content">
         <div class="project-year">2023</div>
         <div class="project-name">Narvarte Lofts</div>
         <div class="project-location">CDMX</div>
+        <button class="project-detail-btn">Ver ficha →</button>
       </div>
     </div>
 
@@ -153,41 +157,157 @@
 
 </section>
 
+<!-- MODAL DE PROYECTO -->
+<div class="project-modal" id="projectModal">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-img-wrap">
+      <img src="" class="modal-img" id="modalImg" alt="">
+      <span class="modal-tag" id="modalTag"></span>
+    </div>
+    <div class="modal-body">
+      <p class="modal-eyebrow" id="modalYear"></p>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-location" id="modalLocation"></p>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <a href="https://wa.me/5215525051050" class="btn-primary" target="_blank">Consultar disponibilidad →</a>
+    </div>
+  </div>
+</div>
+
 <!-- FEATURES -->
 <section id="features" class="features-section">
-
   <div style="max-width:1240px; margin:0 auto;">
-
     <div class="section-eyebrow">Nuestro enfoque</div>
-
-    <h2 class="section-title">
-      Por qué elegir<br><em>FORMA Studio</em>
-    </h2>
-
+    <h2 class="section-title">Por qué elegir<br><em>FORMA Studio</em></h2>
     <div class="features-grid">
-
-      <div class="feature-card">
-        <div class="feature-icon">🏛</div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
         <div class="feature-title">Diseño atemporal</div>
-        <p class="feature-desc">Creamos espacios con identidad propia que perduran.</p>
+        <p class="feature-desc">Creamos espacios con identidad propia que perduran décadas sin perder vigencia estética ni valor patrimonial.</p>
       </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">📐</div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/></svg>
+        </div>
         <div class="feature-title">Precisión técnica</div>
-        <p class="feature-desc">Integración de tecnología BIM en cada proyecto.</p>
+        <p class="feature-desc">Tecnología BIM integrada en cada etapa. Documentación exacta, coordinación de especialidades y control de obra en tiempo real.</p>
       </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🌿</div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        </div>
         <div class="feature-title">Sostenibilidad</div>
-        <p class="feature-desc">Diseño responsable con el entorno.</p>
+        <p class="feature-desc">Certificación LEED y diseño bioclimático. Proyectos que reducen huella de carbono sin sacrificar estética ni funcionalidad.</p>
       </div>
-
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="feature-title">Rendimiento garantizado</div>
+        <p class="feature-desc">Nuestros proyectos de inversión han superado el rendimiento proyectado en los últimos 5 años consecutivos.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="feature-title">Equipo multidisciplinario</div>
+        <p class="feature-desc">Arquitectos, ingenieros estructurales, diseñadores de interiores y especialistas en valuación en cada proyecto.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div class="feature-title">Financiamiento estructurado</div>
+        <p class="feature-desc">Esquemas de co-inversión, preventa y crédito puente. Facilitamos el inicio del proceso desde la primera reunión.</p>
+      </div>
     </div>
-
   </div>
+</section>
 
+<!-- CALCULADORA ROI -->
+<section class="roi-section" id="roi">
+  <div class="roi-inner">
+    <div class="roi-left reveal">
+      <div class="section-eyebrow">Herramienta de inversión</div>
+      <h2 class="section-title">Calcula tu<br><em>rendimiento</em></h2>
+      <p class="roi-desc">Estima el retorno de tu inversión en proyectos FORMA Studio basado en datos históricos reales de nuestro portafolio.</p>
+      <div class="roi-disclaimer">* Estimaciones basadas en rendimientos históricos. No constituyen garantía de retorno.</div>
+    </div>
+    <div class="roi-right reveal reveal-delay-1">
+      <div class="roi-card">
+        <div class="roi-field">
+          <label>Monto de inversión</label>
+          <div class="roi-input-wrap">
+            <span class="roi-prefix">$</span>
+            <input type="number" id="roiAmount" value="500000" min="100000" step="50000" />
+            <span class="roi-suffix">MXN</span>
+          </div>
+          <input type="range" id="roiSlider" min="100000" max="5000000" step="50000" value="500000" />
+          <div class="roi-range-labels"><span>$100K</span><span>$5M</span></div>
+        </div>
+        <div class="roi-field">
+          <label>Tipo de proyecto</label>
+          <div class="roi-type-grid">
+            <button class="roi-type active" data-rate="0.18">Residencial<span>+18% anual</span></button>
+            <button class="roi-type" data-rate="0.22">Comercial<span>+22% anual</span></button>
+            <button class="roi-type" data-rate="0.20">Mixto<span>+20% anual</span></button>
+          </div>
+        </div>
+        <div class="roi-field">
+          <label>Horizonte de inversión</label>
+          <div class="roi-years-grid">
+            <button class="roi-year active" data-years="1">1 año</button>
+            <button class="roi-year" data-years="3">3 años</button>
+            <button class="roi-year" data-years="5">5 años</button>
+          </div>
+        </div>
+        <div class="roi-result">
+          <div class="roi-result-row"><span>Inversión inicial</span><span id="roiInitial">$500,000</span></div>
+          <div class="roi-result-row"><span>Rendimiento estimado</span><span id="roiGain" class="roi-gain">+$90,000</span></div>
+          <div class="roi-result-divider"></div>
+          <div class="roi-result-row roi-result-total"><span>Total proyectado</span><span id="roiTotal">$590,000</span></div>
+        </div>
+        <a href="https://wa.me/5215525051050?text=Hola, me interesa invertir en un proyecto FORMA Studio." class="btn-primary" target="_blank" style="width:100%;justify-content:center;margin-top:8px;">Consultar mi inversión →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRE-REGISTRO -->
+<section class="prereg-section" id="prereg">
+  <div class="prereg-inner">
+    <div class="prereg-badge">Lista de espera exclusiva</div>
+    <h2 class="section-title" style="text-align:center">Accede antes<br><em>que el mercado</em></h2>
+    <p class="prereg-desc">Los mejores proyectos se agotan antes de salir al público. Regístrate y recibe acceso prioritario con precios de preventa.</p>
+    <div class="prereg-form">
+      <div class="prereg-fields">
+        <input type="text" id="preName" placeholder="Nombre completo" />
+        <input type="email" id="preEmail" placeholder="Correo electrónico" />
+        <input type="tel" id="prePhone" placeholder="WhatsApp" />
+        <select id="preBudget">
+          <option value="">Presupuesto de inversión</option>
+          <option>$500K – $1M MXN</option>
+          <option>$1M – $3M MXN</option>
+          <option>$3M – $5M MXN</option>
+          <option>$5M+ MXN</option>
+        </select>
+        <select id="preType">
+          <option value="">Tipo de proyecto de interés</option>
+          <option>Residencial</option>
+          <option>Comercial</option>
+          <option>Mixto</option>
+          <option>Cualquiera</option>
+        </select>
+      </div>
+      <button class="btn-primary prereg-btn" onclick="submitPreReg()">Solicitar acceso prioritario →</button>
+    </div>
+    <p class="prereg-note">Sin compromisos. Tu información es confidencial y nunca será compartida.</p>
+  </div>
 </section>
 
 <!-- CTA -->
